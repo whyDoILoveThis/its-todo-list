@@ -1,0 +1,59 @@
+* ,
+*::before ,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  font-size: 62.5%;
+  background-color: rgb(32, 32, 32);
+  font-family: monospace;
+}
+
+h1 {
+  color: rgba(255, 255, 255, 0.874);
+  text-align: center;
+  font-family: Arial, Helvetica, sans-serif;
+
+  
+}
+
+p {
+  color: var(--color-text-light);
+  font-size: 16px;
+  padding: 0.5rem 1.5rem;
+  border-bottom: var(--border-thin-light);
+}
+
+input {
+  font-size: 18px;
+  color: var(--color-text-light);
+  background: transparent;
+  background-color: transparent;
+  border: var(--border-thin-light);
+  outline: none;
+  caret-color: white;
+  border-radius: 30px;
+  padding: 0.5rem;
+  padding-left: 0.8rem;
+}
+
+button {
+  width: fit-content;
+  font-size: 14px;
+  background-color: rgba(0, 0, 0, 0.195);
+  padding: 0.5rem 0.5rem 0.15rem;
+  border-radius: 99px;
+  color: var(--color-text-light)
+}
+
+button:hover {
+ background-color: rgba(255, 255, 255, 0.098);
+ cursor: pointer;
+}
+
+button > img {
+  height: 15px;
+}

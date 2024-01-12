@@ -134,7 +134,6 @@ const Homepage = () => {
       }
     }
   };
-
   /// 👍 Confirm Edit - Function to confirm the edit and update the database
   const handleEditConfirm = async (uid) => {
     if (todo.uidd === uid) {
@@ -142,7 +141,7 @@ const Homepage = () => {
       update(ref(db, `/${auth.currentUser.uid}/${tempUidd}`), {
         todo: todo,
         color: selectedColor,
-        tempUidd: tempUidd,
+        uidd: tempUidd,
         order: currentOrder,
       });
     }
@@ -156,7 +155,6 @@ const Homepage = () => {
     setTodo("");
     setIsEdit(false);
   };
-
   /// 🗑️ Delete - Function to handle deleting a todo
   const handleDelete = (uid) => {
     console.log("delete");
@@ -245,7 +243,7 @@ const Homepage = () => {
 
   /// 🎨 Return the JSX for the Homepage component
   return (
-    <div ref={todoWrapRef}>
+    <div className="todo" ref={todoWrapRef}>
       {isModalVisisble && (
         <CustomModal
           heading="❗❗Irreversible❗❗"

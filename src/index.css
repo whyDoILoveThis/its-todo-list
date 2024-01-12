@@ -10,6 +10,18 @@ html {
   font-size: 62.5%;
   background-color: rgb(40, 39, 39);
   font-family: monospace;
+  display: flex;
+  justify-content: center;
+}
+
+.app {
+  max-width: 800px;
+ background-color: rgba(255, 255, 255, 0.05);
+ padding: 4rem 0;
+ margin-top: 4rem;
+ border: 1px solid rgba(255, 255, 255, 0.264);
+ border-radius: 30px;
+
 }
 
 h1 {

@@ -101,6 +101,11 @@
     gap: 1rem;
 }
 
+.btn-edit-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
 .btn-add {
     font-size: 10px;
@@ -224,16 +229,46 @@
     color: rgba(255, 255, 255, 0.814);
 }
 
+@keyframes todoControlsAnimation {
+    0% {
+      max-width: 0px;
+      max-height: 0;
+      opacity: 0;
+      display: none;
+      margin-top: 0;
+      padding: 0;
+    }
+    50% {
+      max-width: 100px;
+      display: flex;
+      max-height: 19px;
+      opacity: 0.3;
+      margin-top: 0.5rem;
+      padding: 1rem;
+    }
+    100% {
+      max-width: 200px;
+      max-height: 70px;
+      opacity: 1;
+      margin-top: 1rem;
+      padding: 1rem;
+    }
+  }
+  
+
 .todo-controls {
     display: flex;
     margin-top: 1rem;
     padding: 1rem;
     gap: 1rem;
-    justify-content: end;
+    width: fit-content;
+    align-items: center;
     background-color: rgba(255, 255, 255, 0.061);
-    border-bottom-right-radius: 20px;
-    border-bottom-left-radius: 20px;
+    border-radius: 99px;
+    animation: todoControlsAnimation 0.2s ease-in;
 }
+
+
 
 @keyframes skeletonAnimation {
     0% {

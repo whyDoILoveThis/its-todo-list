@@ -8,7 +8,7 @@
 
 html {
   font-size: 62.5%;
-  background-color: rgb(32, 32, 32);
+  background-color: rgb(40, 39, 39);
   font-family: monospace;
 }
 
@@ -20,12 +20,7 @@ h1 {
   
 }
 
-p {
-  color: var(--color-text-light);
-  font-size: 16px;
-  padding: 0.5rem 1.5rem;
-  border-bottom: var(--border-thin-light);
-}
+
 
 input {
   font-size: 18px;
@@ -46,6 +41,7 @@ button {
   background-color: rgba(0, 0, 0, 0.195);
   padding: 0.5rem 0.5rem 0.15rem;
   border-radius: 99px;
+  border: 1px solid rgba(255, 255, 255, 0.478);
   color: var(--color-text-light)
 }
 

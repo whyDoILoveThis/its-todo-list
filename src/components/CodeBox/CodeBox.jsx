@@ -10,26 +10,33 @@ const CodeBox = ({ language, code }) => {
   };
 
   const fontSize = "14px";
-  const borderRadius = "30px";
+  const borderRadius = "10px";
+  const borderBottomLeftRadius = "0";
+  const borderBottomRightRadius = "0";
   const maxWidth = "85vw";
   const width = "100%";
   const backgroundColor = "#423c4f7c";
   const border = "1px solid #9868ffbe";
   const padding = "1rem 2rem";
+  const margin = "0";
 
   return (
     <div className="centerer">
       <SyntaxHighlighter
+        className="scroll-code"
         language={language}
         style={dracula}
         customStyle={{
           fontSize,
           borderRadius,
+          borderBottomLeftRadius,
+          borderBottomRightRadius,
           maxWidth,
           width,
           backgroundColor,
           border,
           padding,
+          margin,
         }}
       >
         {code}

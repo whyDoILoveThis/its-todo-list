@@ -32,7 +32,6 @@ const Homepage = () => {
   const bottomRef = useRef(null); /// Reference to the top of the page
   const updatedTodoRef = useRef(null); /// Reference to the updated todo after editing
   const navigate = useNavigate(); /// Hook for programmatic navigation
-  const order = allTodos.length + 1;
   const [currentOrder, setCurrentOrder] = useState(null);
   const [isModalVisisble, setModalVisible] = useState(false);
   const [possibleDeleteUidd, setPossibleDeleteUidd] = useState("");
@@ -97,6 +96,7 @@ const Homepage = () => {
   /// 📖 Read, 📝 Add - Function to write a new todo to the database
   const writeToDatabase = () => {
     allTodos.sort((a, b) => a.order - b.order);
+    const nextOrder = allTodos.length + 2;
 
     if (todo !== "") {
       /// 🔑 Generate unique ID and timestamp for the todo
@@ -108,7 +108,7 @@ const Homepage = () => {
         uidd: uidd,
         timestamp: timestamp,
         color: selectedColor,
-        order: order,
+        order: nextOrder,
       });
       /// 🎉 Set flag to indicate a successful addition and reset input
       setIsAdded(true);
@@ -158,8 +158,8 @@ const Homepage = () => {
   };
   /// 🗑️ Delete - Function to handle deleting a todo
   const handleDelete = (uid) => {
-    console.log("delete");
     /// 🗑️ Remove the todo from the database
+    console.log("delete button pressed");
     if (!isEdit) {
       showModalForConfirmation(uid);
     }
@@ -168,10 +168,8 @@ const Homepage = () => {
       setTempUidd("");
       setModalVisible(false);
     }
-
-    if (isEdit) {
-      alert("Confirm edit before deleting");
-    }
+    handleDuplicateOrders(allTodos);
+    navigate("/");
   };
 
   const updateOrder = (uidd, newOrder) => {
@@ -188,6 +186,7 @@ const Homepage = () => {
   };
 
   const handleMoveDown = (todo) => {
+    handleDuplicateOrders(allTodos);
     const currentIndex = sortedTodos.findIndex((t) => t.uidd === todo.uidd);
 
     if (currentIndex < sortedTodos.length - 1) {
@@ -200,12 +199,14 @@ const Homepage = () => {
 
       // Update the order in the database and local state
       updateOrder(todo.uidd, newOrderCurrent);
-      handleDuplicateOrders(allTodos);
+
       updateOrder(nextTodo.uidd, newOrderNext);
     }
   };
 
   const handleMoveUp = (todo) => {
+    handleDuplicateOrders(allTodos);
+
     const currentIndex = sortedTodos.findIndex((t) => t.uidd === todo.uidd);
 
     if (currentIndex > 0) {
@@ -218,33 +219,36 @@ const Homepage = () => {
 
       // Update the order in the database and local state
       updateOrder(todo.uidd, newOrderCurrent);
-      handleDuplicateOrders(allTodos);
+
       updateOrder(prevTodo.uidd, newOrderPrev);
     }
   };
 
   function handleDuplicateOrders(todos) {
-    const orderedTodos = [...todos];
-
-    // Step 1: Identify duplicates
-    const orderCounts = {};
-    orderedTodos.forEach((todo) => {
-      orderCounts[todo.order] = (orderCounts[todo.order] || 0) + 1;
-    });
-
     // Step 2: Handle duplicates
-    orderedTodos.forEach((todo, index) => {
+    todos.forEach((todo, index) => {
+      todos.forEach((todo, index) => {
+        todo.order = 0;
+        todo.order = index;
+        todo.order = 0;
+        todo.order = index;
+      });
+      todo.order = 0;
+      todo.order = index;
+      todo.order = 0;
       todo.order = index;
     });
 
     // Step 3: Update state
     // Assuming you have a state update function like setTodos
-    setAllTodos(orderedTodos);
+    setAllTodos(todos);
+    writeToDatabase();
   }
 
   /// ⏬ Scroll to the bottom of the container when todos change
   useEffect(() => {
     if (isAdded) {
+      handleDuplicateOrders(allTodos);
       if (todoWrapRef.current) {
         /// 🔄 Scroll to the end of the todo container
         todoWrapRef.current.scrollIntoView({
@@ -299,47 +303,50 @@ const Homepage = () => {
               <CodeBox language="jsx" code={todo.todo} />
             )}
             {/* 🛠️ Todo Controls */}
-            {allowEdit ? (
-              <div className="todo-controls">
-                <button
-                  disabled={isEdit}
-                  className={`btn btn-move-up ${
-                    isEdit ? "btn-disabled" : null
-                  }`}
-                  onClick={() => handleMoveUp(todo)}
-                >
-                  <img src={iconUp} alt="up" />
-                </button>
-                <button
-                  disabled={isEdit}
-                  className={`btn btn-move-down ${
-                    isEdit ? "btn-disabled" : null
-                  }`}
-                  onClick={() => handleMoveDown(todo)}
-                >
-                  <img src={iconDown} alt="down" />
-                </button>
-                {/* ✏️ Edit Todo Button */}
-                <button
-                  className="btn btn-update"
-                  onClick={() => handleUpdate(todo)}
-                >
-                  <img src={editIcon} alt="edit" />
-                </button>
-                {/* 🗑️ Delete Todo Button */}
 
-                <button
-                  className={`btn btn-delete ${isEdit ? "btn-disabled" : null}`}
-                  disabled={isEdit}
-                  onClick={() => {
-                    grabTodo(todo.todo);
-                    passUidd(todo.uidd);
-                  }}
-                >
-                  <img src={trashIcon} alt="delete" />
-                </button>
-              </div>
-            ) : null}
+            <div
+              className={`todo-controls ${
+                allowEdit
+                  ? "todo-controls-visible"
+                  : "todo-controls-not-visible"
+              }`}
+            >
+              <button
+                disabled={isEdit}
+                className={`btn btn-move-up ${isEdit ? "btn-disabled" : null}`}
+                onClick={() => handleMoveUp(todo)}
+              >
+                <img src={iconUp} alt="up" />
+              </button>
+              <button
+                disabled={isEdit}
+                className={`btn btn-move-down ${
+                  isEdit ? "btn-disabled" : null
+                }`}
+                onClick={() => handleMoveDown(todo)}
+              >
+                <img src={iconDown} alt="down" />
+              </button>
+              {/* ✏️ Edit Todo Button */}
+              <button
+                className="btn btn-update"
+                onClick={() => handleUpdate(todo)}
+              >
+                <img src={editIcon} alt="edit" />
+              </button>
+              {/* 🗑️ Delete Todo Button */}
+
+              <button
+                className={`btn btn-delete ${isEdit ? "btn-disabled" : null}`}
+                disabled={isEdit}
+                onClick={() => {
+                  grabTodo(todo.todo);
+                  passUidd(todo.uidd);
+                }}
+              >
+                <img src={trashIcon} alt="delete" />
+              </button>
+            </div>
           </div>
         ))
       )}

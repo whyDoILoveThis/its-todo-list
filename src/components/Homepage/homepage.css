@@ -249,8 +249,8 @@
 }
 
 .btn-delete { 
-    padding: 0.6rem 0.8rem;
-    padding-bottom: 0.3rem;
+    padding: 0.77rem 0.8rem;
+    padding-bottom: 0.49rem;
 }
 
 .btn-delete:hover {
@@ -289,7 +289,7 @@
     color: rgba(255, 255, 255, 0.814);
 }
 
-@keyframes todoControlsAnimation {
+/* @keyframes todoControlsAnimation {
     0% {
       max-width: 0px;
       max-height: 0;
@@ -313,21 +313,35 @@
       margin-top: 1rem;
       padding: 1rem;
     }
-  }
+  } */
   
 
 .todo-controls {
+    overflow: hidden;
     display: flex;
-    margin-top: 1rem;
-    padding: 1rem;
     gap: 1rem;
     width: fit-content;
     align-items: center;
     background-color: rgba(255, 255, 255, 0.061);
     border-radius: 99px;
-    animation: todoControlsAnimation 0.2s ease-in;
+    /* animation: todoControlsAnimation 0.2s ease-in; */
+  }
+  
+.todo-controls-visible {
+  max-height: 70px; /* Adjust based on your content */
+  opacity: 1;
+  margin-top: 1rem;
+  padding: 1rem;
+  transition: max-height 0.7s ease-out, padding 0.4s ease, margin 0.4s ease, opacity 0.23s;
 }
 
+.todo-controls-not-visible {
+  max-height: 0px;
+  opacity: 0;
+  padding: 0;
+  margin: 0;
+  transition: max-height 0.4s ease, padding 0.4s ease, margin 0.4s ease, opacity 0.23s ;
+}
 
 
 @keyframes skeletonAnimation {

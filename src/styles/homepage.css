@@ -172,23 +172,23 @@
 }
 
 .btn-add__orange {
-    background-color: rgba(255, 68, 0, 0.276);
-    color: rgb(255, 143, 91);
+    background-color: rgba(255, 68, 0, 0.173);
+    color: rgba(255, 143, 91, 0.88);
     border-color: rgb(255, 128, 0);
     margin: 0.3rem 0;
     padding: 0.34rem 1rem;
 }
 
 .btn-add__green {
-    background-color: rgba(77, 255, 0, 0.276);
-    color: rgb(157, 255, 91);
-    border-color: rgb(43, 255, 0);
+    background-color: rgba(77, 255, 0, 0.086);
+    color: rgba(157, 255, 91, 0.841);
+    border-color: rgba(43, 255, 0, 0.704);
     margin: 0.3rem 0;
     padding: 0.34rem 1rem;
 }
 
 .btn-add__blue {
-    background-color: rgba(0, 64, 255, 0.276);
+    background-color: rgba(0, 64, 255, 0.17);
     color: rgb(132, 163, 248);
     border-color: rgb(0, 110, 255);
     margin: 0.3rem 0;

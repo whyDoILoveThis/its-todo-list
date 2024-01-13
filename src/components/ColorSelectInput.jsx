@@ -118,38 +118,6 @@ function ColorSelectInput({
           >
             <p>Section</p>
           </button>
-          <button
-            className="btn btn-add btn-add__blue"
-            onClick={() => {
-              setSelectedColor("blue");
-            }}
-          >
-            <p>Blue</p>
-          </button>
-          <button
-            className="btn btn-add btn-add__green"
-            onClick={() => {
-              setSelectedColor("green");
-            }}
-          >
-            <p>Green</p>
-          </button>
-          <button
-            className="btn btn-add btn-add__orange"
-            onClick={() => {
-              setSelectedColor("orange");
-            }}
-          >
-            <p>Orange</p>
-          </button>
-          <button
-            className="btn btn-add btn-add__red"
-            onClick={() => {
-              setSelectedColor("red");
-            }}
-          >
-            Red
-          </button>
 
           <button
             className="btn btn-add btn-add__code"
@@ -158,6 +126,38 @@ function ColorSelectInput({
             }}
           >
             <p>Code</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__blue"
+            onClick={() => {
+              setSelectedColor("blue");
+            }}
+          >
+            <p>B</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__green"
+            onClick={() => {
+              setSelectedColor("green");
+            }}
+          >
+            <p>G</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__orange"
+            onClick={() => {
+              setSelectedColor("orange");
+            }}
+          >
+            <p>Or</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__red"
+            onClick={() => {
+              setSelectedColor("red");
+            }}
+          >
+            R
           </button>
         </div>
         <div className="btn-edit-wrap">

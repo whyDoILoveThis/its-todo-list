@@ -1,0 +1,19 @@
+.code__btn-wrap {
+    display: flex;
+    gap: 0.5rem;
+    background-color: rgba(255, 255, 255, 0.086);
+    padding: 0.5rem;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    width: fit-content;
+}
+
+.code__btn {
+    padding: 0.2rem 1rem;
+    border: none;
+}
+
+.code__btn::selection {
+    background-color: transparent;
+}

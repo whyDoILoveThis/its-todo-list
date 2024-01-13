@@ -1,0 +1,8 @@
+.flex-col {
+    flex-direction: column;
+}
+
+.pad-1rem {
+    padding: 1rem;
+    border: none;
+}

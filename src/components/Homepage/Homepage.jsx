@@ -11,7 +11,6 @@ import editIcon from "../../assets/icon--edit.png";
 import trashIcon from "../../assets/icon--trash.png";
 import iconDown from "../../assets/icon--down.png";
 import iconUp from "../../assets/icon--up.png";
-import "./homepage.css";
 import ColorSelectInput from "../ColorSelectInput";
 import CustomModal from "../CustomModal";
 import CodeBox from "../CodeBox";
@@ -286,9 +285,9 @@ const Homepage = () => {
       {loading ? (
         <>
           <div className="skeleton"></div>
-          <div className=" skeleton"></div>
-          <div className=" skeleton"></div>
-          <div className=" skeleton"></div>
+          <div className="skeleton"></div>
+          <div className="skeleton"></div>
+          <div className="skeleton"></div>
         </>
       ) : (
         sortedTodos.map((todo, index) => (

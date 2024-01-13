@@ -2,6 +2,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 import PropTypes from "prop-types";
+import { useState } from "react";
+import "./CodeBox.css";
 
 const CodeBox = ({ language, code }) => {
   CodeBox.propTypes = {
@@ -9,7 +11,8 @@ const CodeBox = ({ language, code }) => {
     code: PropTypes.string.isRequired,
   };
 
-  const fontSize = "14px";
+  const [fontSize, setFontSize] = useState("14px");
+
   const borderRadius = "10px";
   const borderBottomLeftRadius = "0";
   const borderBottomRightRadius = "0";
@@ -21,7 +24,7 @@ const CodeBox = ({ language, code }) => {
   const margin = "0";
 
   return (
-    <div className="centerer">
+    <div className=" flex-col">
       <SyntaxHighlighter
         className="scroll-code"
         language={language}
@@ -41,6 +44,24 @@ const CodeBox = ({ language, code }) => {
       >
         {code}
       </SyntaxHighlighter>
+      <div className="code__btn-wrap" style={{ gap: "5px" }}>
+        <button
+          onClick={() => {
+            setFontSize((prevSize) => `${parseInt(prevSize, 10) - 1}px`);
+          }}
+          className="code__btn"
+        >
+          -
+        </button>
+        <button
+          onClick={() => {
+            setFontSize((prevSize) => `${parseInt(prevSize, 10) + 1}px`);
+          }}
+          className="code__btn"
+        >
+          +
+        </button>
+      </div>
     </div>
   );
 };

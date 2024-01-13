@@ -14,6 +14,7 @@ import iconUp from "../../assets/icon--up.png";
 import "./homepage.css";
 import ColorSelectInput from "../ColorSelectInput";
 import CustomModal from "../CustomModal";
+import CodeBox from "../CodeBox";
 
 /// 🚀 Functional component for the Homepage
 const Homepage = () => {
@@ -199,6 +200,7 @@ const Homepage = () => {
 
       // Update the order in the database and local state
       updateOrder(todo.uidd, newOrderCurrent);
+      handleDuplicateOrders(allTodos);
       updateOrder(nextTodo.uidd, newOrderNext);
     }
   };
@@ -216,9 +218,29 @@ const Homepage = () => {
 
       // Update the order in the database and local state
       updateOrder(todo.uidd, newOrderCurrent);
+      handleDuplicateOrders(allTodos);
       updateOrder(prevTodo.uidd, newOrderPrev);
     }
   };
+
+  function handleDuplicateOrders(todos) {
+    const orderedTodos = [...todos];
+
+    // Step 1: Identify duplicates
+    const orderCounts = {};
+    orderedTodos.forEach((todo) => {
+      orderCounts[todo.order] = (orderCounts[todo.order] || 0) + 1;
+    });
+
+    // Step 2: Handle duplicates
+    orderedTodos.forEach((todo, index) => {
+      todo.order = index;
+    });
+
+    // Step 3: Update state
+    // Assuming you have a state update function like setTodos
+    setAllTodos(orderedTodos);
+  }
 
   /// ⏬ Scroll to the bottom of the container when todos change
   useEffect(() => {
@@ -271,7 +293,11 @@ const Homepage = () => {
             key={index}
             ref={todo.uidd === tempUidd ? updatedTodoRef : null}
           >
-            <p>{todo.todo}</p>
+            {todo.color !== "code" ? (
+              <p>{todo.todo}</p>
+            ) : (
+              <CodeBox language="jsx" code={todo.todo} />
+            )}
             {/* 🛠️ Todo Controls */}
             {allowEdit ? (
               <div className="todo-controls">

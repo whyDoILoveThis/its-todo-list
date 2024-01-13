@@ -67,7 +67,7 @@ function ColorSelectInput({
           />
         </div>
       )}
-      <input
+      <textarea
         className={`todo-input todo-input__color--${todo.color}`}
         type="text"
         placeholder="Add to notes...."
@@ -78,16 +78,16 @@ function ColorSelectInput({
       />
       {!isEdit && todo !== "" ? (
         /// ➕ Add Todo Button
-        <>
+        <div className="btn-plus-wrap">
           <button
-            className="btn-add"
+            className="btn-add btn-plus"
             onClick={() => {
               writeToDatabase();
             }}
           >
             <img src={plusIcon} alt="add" />
           </button>
-        </>
+        </div>
       ) : isEdit ? (
         /// 👍 Confirm Edit Button
         <>
@@ -111,28 +111,12 @@ function ColorSelectInput({
         </button>
         <div className="btn-add-wrap">
           <button
-            className="btn btn-add btn-add__red"
+            className="btn btn-add btn-add__section"
             onClick={() => {
-              setSelectedColor("red");
+              setSelectedColor("section");
             }}
           >
-            Red
-          </button>
-          <button
-            className="btn btn-add btn-add__orange"
-            onClick={() => {
-              setSelectedColor("orange");
-            }}
-          >
-            <p>Orange</p>
-          </button>
-          <button
-            className="btn btn-add btn-add__green"
-            onClick={() => {
-              setSelectedColor("green");
-            }}
-          >
-            <p>Green</p>
+            <p>Section</p>
           </button>
           <button
             className="btn btn-add btn-add__blue"
@@ -143,12 +127,37 @@ function ColorSelectInput({
             <p>Blue</p>
           </button>
           <button
-            className="btn btn-add btn-add__section"
+            className="btn btn-add btn-add__green"
             onClick={() => {
-              setSelectedColor("section");
+              setSelectedColor("green");
             }}
           >
-            <p>Section</p>
+            <p>Green</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__orange"
+            onClick={() => {
+              setSelectedColor("orange");
+            }}
+          >
+            <p>Orange</p>
+          </button>
+          <button
+            className="btn btn-add btn-add__red"
+            onClick={() => {
+              setSelectedColor("red");
+            }}
+          >
+            Red
+          </button>
+
+          <button
+            className="btn btn-add btn-add__code"
+            onClick={() => {
+              setSelectedColor("code");
+            }}
+          >
+            <p>Code</p>
           </button>
         </div>
         <div className="btn-edit-wrap">

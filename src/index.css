@@ -16,12 +16,13 @@ html {
 
 .app {
   max-width: 800px;
+  width: 90vw;
  background-color: rgba(255, 255, 255, 0.05);
  padding: 4rem 0;
- margin-top: 4rem;
+ margin: 1rem;
+ margin-top: 3rem;
  border: 1px solid rgba(255, 255, 255, 0.264);
  border-radius: 30px;
-
 }
 
 h1 {
@@ -32,10 +33,15 @@ h1 {
   
 }
 
-
+textarea {
+  background-color: rgba(83, 83, 83, 0.306);
+  border-radius: 8px;
+  padding: 0.5rem;
+  font-size: 14px;
+}
 
 input {
-  font-size: 18px;
+  font-size: 16px;
   color: var(--color-text-light);
   background: transparent;
   background-color: transparent;
@@ -64,4 +70,10 @@ button:hover {
 
 button > img {
   height: 15px;
+}
+
+.centerer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
